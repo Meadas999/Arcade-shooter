@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArcadeShooter", "ArcadeShooter\ArcadeShooter.csproj", "{FDCEA518-325E-4DA6-9925-5F4A5A150862}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FDCEA518-325E-4DA6-9925-5F4A5A150862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDCEA518-325E-4DA6-9925-5F4A5A150862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDCEA518-325E-4DA6-9925-5F4A5A150862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDCEA518-325E-4DA6-9925-5F4A5A150862}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {97CE2AAD-7EC3-484B-B5C3-B1D441B4BD13}
+	EndGlobalSection
+EndGlobal
