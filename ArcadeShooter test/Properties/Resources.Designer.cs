@@ -83,6 +83,16 @@ namespace ArcadeShooter_test.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Background {
+            get {
+                object obj = ResourceManager.GetObject("Background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap crosshair {
             get {
                 object obj = ResourceManager.GetObject("crosshair", resourceCulture);
@@ -106,6 +116,36 @@ namespace ArcadeShooter_test.Properties {
         internal static System.Drawing.Bitmap Schermafbeelding_2021_11_23_130012 {
             get {
                 object obj = ResourceManager.GetObject("Schermafbeelding_2021_11_23_130012", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ZombieDik {
+            get {
+                object obj = ResourceManager.GetObject("ZombieDik", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ZombieDun {
+            get {
+                object obj = ResourceManager.GetObject("ZombieDun", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ZombiePic {
+            get {
+                object obj = ResourceManager.GetObject("ZombiePic", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

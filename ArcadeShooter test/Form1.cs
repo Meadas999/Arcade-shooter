@@ -24,9 +24,9 @@ namespace ArcadeShooter_test
             WindowState = FormWindowState.Maximized;
             timer2.Start();
             label1.Text = "Levens: 3";
-            Bitmap bmp = new Bitmap(Properties.Resources.crosshair);
-            Cursor crsr = new Cursor(bmp.GetHicon()); 
-            this.Cursor = crsr;  
+            ////Bitmap bmp = new Bitmap(Properties.Resources.crosshair);
+            //Cursor crsr = new Cursor(bmp.GetHicon()); 
+            //this.Cursor = crsr;  
 
         }
 
@@ -58,14 +58,16 @@ namespace ArcadeShooter_test
             for (int i = 0; i < aantal; i++)
             {
                 PictureBox picture = new PictureBox();
-                picture.Image = Properties.Resources.crosshair;
-                picture.Size = new Size(130, 130);
+                picture.Image = Properties.Resources.ZombieDik;
+                picture.Size = new Size(200, 200);
                 picture.Location = new Point(random.Next(1500), 0);
                 picture.SizeMode = PictureBoxSizeMode.Zoom;
                 picture.Click += pics_Click; 
                 picture.BackColor = Color.Transparent;
                 this.Controls.Add(picture);
             }
+
+
         }
         private void pics_Click(object sender, EventArgs e)
         {
@@ -96,14 +98,16 @@ namespace ArcadeShooter_test
             Zombie();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MakeZombie(5);
-        }
+    
 
         private void timer2_Tick(object sender, EventArgs e)
         {
             MakeZombie(5);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 
