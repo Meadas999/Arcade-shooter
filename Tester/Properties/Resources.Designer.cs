@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ArcadeShooter_test.Properties {
+namespace Tester.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ArcadeShooter_test.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ArcadeShooter_test.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Tester.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,59 +63,9 @@ namespace ArcadeShooter_test.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _108_1086909_zombies_peashooter_pixel_minecraft_plants_vs_zombies_pixel {
+        internal static System.Drawing.Bitmap Arcade {
             get {
-                object obj = ResourceManager.GetObject("_108_1086909_zombies_peashooter_pixel_minecraft_plants_vs_zombies_pixel", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _52_523304_plus_sign_icon_png_plus_icon_png_transparent {
-            get {
-                object obj = ResourceManager.GetObject("_52_523304_plus_sign_icon_png_plus_icon_png_transparent", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Background {
-            get {
-                object obj = ResourceManager.GetObject("Background", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Background1 {
-            get {
-                object obj = ResourceManager.GetObject("Background1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap crosshair {
-            get {
-                object obj = ResourceManager.GetObject("crosshair", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap crosshair_png {
-            get {
-                object obj = ResourceManager.GetObject("crosshair_png", resourceCulture);
+                object obj = ResourceManager.GetObject("Arcade", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,10 +83,19 @@ namespace ArcadeShooter_test.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Schermafbeelding_2021_11_23_130012 {
+        internal static System.Drawing.Bitmap ZombieCute {
             get {
-                object obj = ResourceManager.GetObject("Schermafbeelding_2021_11_23_130012", resourceCulture);
+                object obj = ResourceManager.GetObject("ZombieCute", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream ZombieDeath {
+            get {
+                return ResourceManager.GetStream("ZombieDeath", resourceCulture);
             }
         }
         
@@ -146,16 +105,6 @@ namespace ArcadeShooter_test.Properties {
         internal static System.Drawing.Bitmap ZombieDik {
             get {
                 object obj = ResourceManager.GetObject("ZombieDik", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ZombieDun {
-            get {
-                object obj = ResourceManager.GetObject("ZombieDun", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

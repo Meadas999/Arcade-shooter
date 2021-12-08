@@ -7,9 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Timers;
 
-namespace ArcadeShooter_test
+namespace ArcadeShooter_Goed
 {
     public partial class Form1 : Form
     {
@@ -17,14 +16,16 @@ namespace ArcadeShooter_test
         public Form1()
         {
             InitializeComponent();
-            timer1.Start();
+            FormBorderStyle = FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
+            timer2.Start();
             label1.Text = "Levens: 3";
             ////Bitmap bmp = new Bitmap(Properties.Resources.crosshair);
             //Cursor crsr = new Cursor(bmp.GetHicon()); 
             //this.Cursor = crsr;  
 
         }
-    
+        int levens;
         void Zombie()
         {
 
@@ -48,7 +49,7 @@ namespace ArcadeShooter_test
                 }
             }
         }
-        
+
 
         //private void pic_Click(object sender, EventArgs e)
         //{
@@ -69,11 +70,11 @@ namespace ArcadeShooter_test
             zombie.MakeZombie(5, this);
         }
 
-    
+
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -81,6 +82,4 @@ namespace ArcadeShooter_test
 
         }
     }
-
-
 }

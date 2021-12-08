@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5FE76963-5EE2-4DBE-A956-A35B6C4DB703}</ProjectGuid>
+    <ProjectGuid>{4BD49143-C31E-402C-AFDE-6D5766B1C852}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ArcadeShooter_test</RootNamespace>
-    <AssemblyName>ArcadeShooter test</AssemblyName>
+    <RootNamespace>ArcadeShooter_Goed</RootNamespace>
+    <AssemblyName>ArcadeShooter Goed</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -60,19 +60,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Class1.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -83,34 +82,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\108-1086909_zombies-peashooter-pixel-minecraft-plants-vs-zombies-pixel.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Schermafbeelding 2021-11-23 130012.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\crosshair png.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\52-523304_plus-sign-icon-png-plus-icon-png-transparent.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\crosshair.png" />
+    <None Include="Resources\grass.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ZombieDik.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ZombieDun.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Background.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Background.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\grass.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

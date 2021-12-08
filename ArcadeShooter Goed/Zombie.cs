@@ -9,14 +9,14 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Timers;
 
-namespace ArcadeShooter_test
+namespace ArcadeShooter_Goed
 {
     class Zombie
     {
         Random random = new Random();
-
         Form1 form = new Form1();
         private int score = 0;
+
         public void MakeZombie(int aantal, Form formInstance)
         {
 
@@ -38,7 +38,7 @@ namespace ArcadeShooter_test
             pic.Visible = false;
             score++;
             form.label2.Text = $"Score: {score}";
-            this.Controls.Remove(pic);
+            form.Controls.Remove(pic);
             pic.Dispose();
         }
     }

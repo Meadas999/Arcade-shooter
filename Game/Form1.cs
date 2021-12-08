@@ -7,24 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Timers;
 
-namespace ArcadeShooter_test
+namespace Game
 {
     public partial class Form1 : Form
     {
-        Zombie zombie = new Zombie();
         public Form1()
         {
             InitializeComponent();
-            timer1.Start();
-            label1.Text = "Levens: 3";
-            ////Bitmap bmp = new Bitmap(Properties.Resources.crosshair);
-            //Cursor crsr = new Cursor(bmp.GetHicon()); 
-            //this.Cursor = crsr;  
-
+            FormBorderStyle = FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
+            //timer2.Start();
+            //label1.Text = "Levens: 3";
         }
-    
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            InitializeComponent();
+        }
+
         void Zombie()
         {
 
@@ -48,39 +49,11 @@ namespace ArcadeShooter_test
                 }
             }
         }
-        
-
-        //private void pic_Click(object sender, EventArgs e)
-        //{
-        //    PictureBox pic = sender as PictureBox;
-        //    hitpoints--;
-        //    if (hitpoints == 0)
-        //    {
-        //        pic.Visible = false;
-
-        //        hitpoints = 10;
-        //        lbLifeTank.Text = $"LevenTank: Dead";
-        //    }
-        //    lbLifeTank.Text = $"LevenTank: {hitpoints}";
-        //}
 
         private void timer1_Tick_1(object sender, EventArgs e)
         {
-            zombie.MakeZombie(5, this);
+            //zombie.MakeZombie(5, this);
         }
 
-    
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
-
-
 }
