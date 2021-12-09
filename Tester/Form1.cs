@@ -16,9 +16,11 @@ namespace Tester
         static Random random = new Random();
         Zombie Bigzombie = new Zombie(2, zombielijst[1], "Groot");
         Zombie SmallZombie = new Zombie(1, zombielijst[2], "Klein");
+        GameOver GameOver = new GameOver();
+        Player speler = new Player(naam,);
         int levens = 3;
         int score = 0;
-
+        string naam = "Amier";
        
 
 
@@ -30,7 +32,8 @@ namespace Tester
             timersnelheid.Start();
             timerMaker.Start();
             test1.Text = "Levens: " + "" + levens;
-            label2.Text = Bigzombie.Naam;
+
+            
            
         }
 
@@ -90,7 +93,21 @@ namespace Tester
                 Bigzombie.Health = 2;
             }
         }
+        public void CheckLevens()
+        {
+            if (levens == 0)
+            {
+                this.Hide();
+                GameOver.ShowDialog();
+                this.Close();
 
+            }
+
+            else
+            { 
+            }
+
+        }
         void Smallzombie_Click(object sender, EventArgs e)
         {
             PictureBox pic = sender as PictureBox;
@@ -145,6 +162,12 @@ namespace Tester
             MakeBigZombie(1, this);
             MakeSmallZombie(5, this);
 
+        }
+
+        private void timeChecker_Tick(object sender, EventArgs e)
+        {
+            timeChecker.Start();
+            CheckLevens();
         }
     }
 }

@@ -15,6 +15,22 @@ namespace Tester
         public GameOver()
         {
             InitializeComponent();
+            
+        }
+
+        private void naamConfirmBtn_Click(object sender, EventArgs e)
+        {
+            Player player = new Player(naamConfirmTB.Text);
+            Leaderboard leaderboard = new Leaderboard();
+
+
+            this.Hide();
+            leaderboard.ShowDialog();
+            this.Close();
+
+            
+            
+
         }
     }
 }

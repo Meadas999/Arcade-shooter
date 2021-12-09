@@ -34,11 +34,12 @@ namespace Tester
             this.test1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.timerMaker = new System.Windows.Forms.Timer(this.components);
+            this.timeChecker = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // timersnelheid
             // 
-            this.timersnelheid.Interval = 400;
+            this.timersnelheid.Interval = 200;
             this.timersnelheid.Tick += new System.EventHandler(this.timersnelheid_Tick);
             // 
             // test1
@@ -66,13 +67,18 @@ namespace Tester
             this.timerMaker.Interval = 8000;
             this.timerMaker.Tick += new System.EventHandler(this.timerMaker_Tick);
             // 
+            // timeChecker
+            // 
+            this.timeChecker.Enabled = true;
+            this.timeChecker.Tick += new System.EventHandler(this.timeChecker_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackgroundImage = global::Tester.Properties.Resources.grass;
-            this.ClientSize = new System.Drawing.Size(837, 486);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.test1);
             this.Name = "Form1";
@@ -90,6 +96,7 @@ namespace Tester
         public System.Windows.Forms.Label test1;
         public System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer timerMaker;
+        private System.Windows.Forms.Timer timeChecker;
     }
 }
 
