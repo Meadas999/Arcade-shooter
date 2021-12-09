@@ -30,8 +30,8 @@ namespace Tester
         private void InitializeComponent()
         {
             this.playKnop = new System.Windows.Forms.Button();
-            this.ArcadeMenuLabel = new System.Windows.Forms.PictureBox();
             this.leaderboardKnop = new System.Windows.Forms.Button();
+            this.ArcadeMenuLabel = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ArcadeMenuLabel)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,16 +48,6 @@ namespace Tester
             this.playKnop.UseVisualStyleBackColor = false;
             this.playKnop.Click += new System.EventHandler(this.playKnop_Click);
             // 
-            // ArcadeMenuLabel
-            // 
-            this.ArcadeMenuLabel.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ArcadeMenuLabel.Image = global::Tester.Properties.Resources.Arcade;
-            this.ArcadeMenuLabel.Location = new System.Drawing.Point(239, 153);
-            this.ArcadeMenuLabel.Name = "ArcadeMenuLabel";
-            this.ArcadeMenuLabel.Size = new System.Drawing.Size(829, 98);
-            this.ArcadeMenuLabel.TabIndex = 2;
-            this.ArcadeMenuLabel.TabStop = false;
-            // 
             // leaderboardKnop
             // 
             this.leaderboardKnop.BackColor = System.Drawing.Color.White;
@@ -71,10 +61,21 @@ namespace Tester
             this.leaderboardKnop.UseVisualStyleBackColor = false;
             this.leaderboardKnop.Click += new System.EventHandler(this.leaderboardKnop_Click);
             // 
+            // ArcadeMenuLabel
+            // 
+            this.ArcadeMenuLabel.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.ArcadeMenuLabel.Image = global::Tester.Properties.Resources.Arcade;
+            this.ArcadeMenuLabel.Location = new System.Drawing.Point(239, 153);
+            this.ArcadeMenuLabel.Name = "ArcadeMenuLabel";
+            this.ArcadeMenuLabel.Size = new System.Drawing.Size(829, 98);
+            this.ArcadeMenuLabel.TabIndex = 2;
+            this.ArcadeMenuLabel.TabStop = false;
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.leaderboardKnop);
@@ -83,6 +84,7 @@ namespace Tester
             this.Name = "MainMenu";
             this.Text = "MainMenu";
             this.TransparencyKey = System.Drawing.SystemColors.Control;
+            this.Load += new System.EventHandler(this.MainMenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ArcadeMenuLabel)).EndInit();
             this.ResumeLayout(false);
 

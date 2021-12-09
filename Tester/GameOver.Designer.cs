@@ -1,7 +1,7 @@
 ﻿
 namespace Tester
 {
-    partial class Leaderboard
+    partial class GameOver
     {
         /// <summary>
         /// Required designer variable.
@@ -29,33 +29,35 @@ namespace Tester
         /// </summary>
         private void InitializeComponent()
         {
-            this.terugKnop = new System.Windows.Forms.Button();
+            this.gameoverPic = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.gameoverPic)).BeginInit();
             this.SuspendLayout();
             // 
-            // terugKnop
+            // gameoverPic
             // 
-            this.terugKnop.Location = new System.Drawing.Point(38, 400);
-            this.terugKnop.Name = "terugKnop";
-            this.terugKnop.Size = new System.Drawing.Size(75, 23);
-            this.terugKnop.TabIndex = 0;
-            this.terugKnop.Text = "back";
-            this.terugKnop.UseVisualStyleBackColor = true;
-            this.terugKnop.Click += new System.EventHandler(this.terugKnop_Click);
+            this.gameoverPic.BackColor = System.Drawing.Color.Transparent;
+            this.gameoverPic.Image = global::Tester.Properties.Resources.GameOver;
+            this.gameoverPic.Location = new System.Drawing.Point(316, 187);
+            this.gameoverPic.Name = "gameoverPic";
+            this.gameoverPic.Size = new System.Drawing.Size(663, 98);
+            this.gameoverPic.TabIndex = 3;
+            this.gameoverPic.TabStop = false;
             // 
-            // Leaderboard
+            // GameOver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.terugKnop);
-            this.Name = "Leaderboard";
-            this.Text = "Leaderboard";
+            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.gameoverPic);
+            this.Name = "GameOver";
+            this.Text = "GameOver";
+            ((System.ComponentModel.ISupportInitialize)(this.gameoverPic)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button terugKnop;
+        private System.Windows.Forms.PictureBox gameoverPic;
     }
 }

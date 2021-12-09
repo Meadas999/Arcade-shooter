@@ -35,5 +35,10 @@ namespace Tester
             leaderboard.ShowDialog();
             this.Close();
         }
+
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

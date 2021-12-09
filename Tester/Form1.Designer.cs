@@ -70,6 +70,7 @@ namespace Tester
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackgroundImage = global::Tester.Properties.Resources.grass;
             this.ClientSize = new System.Drawing.Size(837, 486);
             this.Controls.Add(this.label2);

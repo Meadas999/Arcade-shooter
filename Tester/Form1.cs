@@ -146,7 +146,5 @@ namespace Tester
             MakeSmallZombie(5, this);
 
         }
-
-       
     }
 }
