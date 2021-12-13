@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tester
 {
-    class Player
+   public class Player
     {
         public string Naam {get; set;} 
         public int Levens { get; set; }

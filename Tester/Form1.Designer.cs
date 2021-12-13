@@ -35,6 +35,7 @@ namespace Tester
             this.label2 = new System.Windows.Forms.Label();
             this.timerMaker = new System.Windows.Forms.Timer(this.components);
             this.timeChecker = new System.Windows.Forms.Timer(this.components);
+            this.Healthbar = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // timersnelheid
@@ -67,10 +68,13 @@ namespace Tester
             this.timerMaker.Interval = 8000;
             this.timerMaker.Tick += new System.EventHandler(this.timerMaker_Tick);
             // 
-            // timeChecker
+            // Healthbar
             // 
-            this.timeChecker.Enabled = true;
-            this.timeChecker.Tick += new System.EventHandler(this.timeChecker_Tick);
+            this.Healthbar.Location = new System.Drawing.Point(561, 33);
+            this.Healthbar.Name = "Healthbar";
+            this.Healthbar.Size = new System.Drawing.Size(389, 59);
+            this.Healthbar.TabIndex = 2;
+            this.Healthbar.Value = 100;
             // 
             // Form1
             // 
@@ -79,6 +83,7 @@ namespace Tester
             this.AutoSize = true;
             this.BackgroundImage = global::Tester.Properties.Resources.grass;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.Healthbar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.test1);
             this.Name = "Form1";
@@ -97,6 +102,7 @@ namespace Tester
         public System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer timerMaker;
         private System.Windows.Forms.Timer timeChecker;
+        private System.Windows.Forms.ProgressBar Healthbar;
     }
 }
 

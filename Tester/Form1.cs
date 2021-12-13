@@ -16,11 +16,10 @@ namespace Tester
         static Random random = new Random();
         Zombie Bigzombie = new Zombie(2, zombielijst[1], "Groot");
         Zombie SmallZombie = new Zombie(1, zombielijst[2], "Klein");
-        GameOver GameOver = new GameOver();
-        Player speler = new Player(naam,);
-        int levens = 3;
-        int score = 0;
-        string naam = "Amier";
+        
+        Player speler = new Player("", 3, 0);
+        
+       
        
 
 
@@ -31,7 +30,7 @@ namespace Tester
             InitializeComponent();
             timersnelheid.Start();
             timerMaker.Start();
-            test1.Text = "Levens: " + "" + levens;
+            test1.Text = "Levens: " + "" + speler.Levens;
 
             
            
@@ -80,7 +79,7 @@ namespace Tester
             PictureBox pic = sender as PictureBox;
             Bigzombie.Health-- ;
             
-            label2.Text = $"Score: {score}";
+            label2.Text = $"Score: {speler.Levens}";
             
             if (Bigzombie.Health == 0)
             {
@@ -88,46 +87,41 @@ namespace Tester
                 this.Controls.Remove(pic);
                 pic.Dispose();
 
-                score++;
+                speler.Score++;
 
                 Bigzombie.Health = 2;
             }
         }
-        public void CheckLevens()
+        
+
+        public void gameOver()
         {
-            if (levens == 0)
-            {
-                this.Hide();
-                GameOver.ShowDialog();
-                this.Close();
-
-            }
-
-            else
-            { 
-            }
-
+            GameOver GameOver = new GameOver(speler);
+            this.Hide();
+            GameOver.ShowDialog();
+            this.Close();
         }
+
         void Smallzombie_Click(object sender, EventArgs e)
         {
             PictureBox pic = sender as PictureBox;
             SmallZombie.Health--;
-            label2.Text = $"Score: {score}";
-           
+            
             if (SmallZombie.Health == 0)
             {
+                speler.Score++;
                 pic.Visible = false;
                 this.Controls.Remove(pic);
                 pic.Dispose();
-                
-                score++;
-                
-                
+
+
+
+                label2.Text = $"Score: {speler.Levens}";
                 SmallZombie.Health = 1;
             }
-          
+
             
-       
+
         }
 
         public void Zombie()
@@ -142,7 +136,16 @@ namespace Tester
                     if (pic.Top > 600 && pic.Visible == true)
                     {
                         pic.Top = 0;
-                        test1.Text = $"Levens: {--levens}";
+                        if(speler.Levens !=0)
+                        {
+                            test1.Text = $"Levens: {--speler.Levens}";
+                        }
+                        else if(speler.Levens <=0 )
+                        {
+                            gameOver();
+                        }
+                        
+
                     }
                     else if (pic.Top > 600 && pic.Visible == false)
                     {
@@ -164,10 +167,6 @@ namespace Tester
 
         }
 
-        private void timeChecker_Tick(object sender, EventArgs e)
-        {
-            timeChecker.Start();
-            CheckLevens();
-        }
+       
     }
 }

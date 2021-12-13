@@ -12,21 +12,23 @@ namespace Tester
 {
     public partial class GameOver : Form
     {
-        public GameOver()
+        Player CurrentPlayer;
+        public GameOver(Player currentplayer)
         {
             InitializeComponent();
-            
+            this.CurrentPlayer = currentplayer;
         }
 
         private void naamConfirmBtn_Click(object sender, EventArgs e)
         {
-            Player player = new Player(naamConfirmTB.Text);
+           Player player = new Player(naamConfirmTB.Text);
             Leaderboard leaderboard = new Leaderboard();
 
 
             this.Hide();
             leaderboard.ShowDialog();
             this.Close();
+            
 
             
             
