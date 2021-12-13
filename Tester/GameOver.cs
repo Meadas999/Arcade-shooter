@@ -21,8 +21,8 @@ namespace Tester
 
         private void naamConfirmBtn_Click(object sender, EventArgs e)
         {
-           Player player = new Player(naamConfirmTB.Text);
-            Leaderboard leaderboard = new Leaderboard();
+           CurrentPlayer.Naam = naamConfirmTB.Text;
+           Leaderboard leaderboard = new Leaderboard();
 
 
             this.Hide();

@@ -30,7 +30,14 @@ namespace Tester
             
         }
 
-        
-        
+        public int Attack()
+        {
+            ; 
+        }
+
+        public void LoseHealth(int damage)
+        {
+            this.Health -= damage;
+        }
     }
 }
