@@ -15,16 +15,16 @@ namespace Tester
         public MainMenu()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
         }
 
         private void playKnop_Click(object sender, EventArgs e)
         {
             Form1 game = new Form1();
-            
             this.Hide();
             game.ShowDialog();
             this.Close();
-
         }
 
         private void leaderboardKnop_Click(object sender, EventArgs e)

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO.Ports;
 using System.Windows.Forms;
+//using System.Timers;
 
 namespace Tester
 {
@@ -27,7 +23,11 @@ namespace Tester
 
         public Form1()
         {
+            port = new SerialPort("COM4", 9600, Parity.None, 8, StopBits.One);
             InitializeComponent();
+            connectMetArduino();
+            FormBorderStyle = FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
             timersnelheid.Start();
             timerMaker.Start();
             test1.Text = "Levens: " + "" + speler.Levens;
@@ -36,14 +36,10 @@ namespace Tester
            
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-        }
-
+        private void Form1_Load(object sender, EventArgs e) { }
+       
         public void MakeBigZombie(int aantal, Form formInstance)
         {
-            
             for (int i = 0; i < aantal; i++)
             {
                 PictureBox picture = new PictureBox();
@@ -69,7 +65,8 @@ namespace Tester
                 picture.SizeMode = PictureBoxSizeMode.Zoom;
                 picture.Click += Smallzombie_Click;
                 picture.BackColor = Color.Transparent;
-                formInstance.Controls.Add(picture);
+                formInstance.Controls.Add(picture); 
+                //picture.Tag
             }
         }
 
@@ -123,10 +120,8 @@ namespace Tester
             
 
         }
-
-        public void Zombie()
+        public void ZombieSnelheid()
         {
-
             foreach (Control control in Controls)
             {
                 PictureBox pic = control as PictureBox;
@@ -147,26 +142,53 @@ namespace Tester
                         
 
                     }
-                    else if (pic.Top > 600 && pic.Visible == false)
-                    {
-                        pic.Visible = true;
-                        pic.Top = 0;
-                    }
                 }
             }
         }
         private void timersnelheid_Tick(object sender, EventArgs e)
         {
-            Zombie();
+            ZombieSnelheid();
         }
-
         private void timerMaker_Tick(object sender, EventArgs e)
         {
             MakeBigZombie(1, this);
             MakeSmallZombie(5, this);
-
+            //target1();
+            if(seconden >= 5)
+            {
+                textBox1.Text = seconden.ToString();
+            }
+        }
+        public void MakeTimer()
+        {
+            Timer timer = new Timer();
+            {
+                timer.Interval = 1000;
+            }
+            timer.Enabled = true;
+            timer.Tick += new EventHandler(MyTimer_Tick);
+            timer.Start();
         }
 
-       
+        private void MyTimer_Tick(object sender, EventArgs e)
+        {
+            seconden++; 
+        }
+        private void connectMetArduino()
+        { 
+            //port.Open();
+            //port.Write("#STAR\n");
+        } 
+        private void target1()
+        {
+            MakeTimer();
+            //port.Write("#T1ON\n");
+            if (seconden == 5)
+            {
+                //port.Write("#T1OF\n");
+                textBox1.Text = Convert.ToString(seconden);
+                seconden = 0;
+            }
+        }
     }
 }

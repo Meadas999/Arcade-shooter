@@ -17,20 +17,11 @@ namespace Tester
         public string Naam { get; private set; }
         public string Type { get; private set; }
         
-
-        
-        
         public Zombie(int health, string naam, string type)
         {
             this.Health = health;
             this.Naam = naam;
-            this.Type = type;
-            
-
-            
+            this.Type = type;     
         }
-
-        
-        
     }
 }

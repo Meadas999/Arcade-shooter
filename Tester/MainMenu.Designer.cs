@@ -38,11 +38,12 @@ namespace Tester
             // playKnop
             // 
             this.playKnop.BackColor = System.Drawing.Color.White;
-            this.playKnop.Font = new System.Drawing.Font("Just Bubble", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playKnop.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playKnop.ForeColor = System.Drawing.Color.Black;
-            this.playKnop.Location = new System.Drawing.Point(367, 315);
+            this.playKnop.Location = new System.Drawing.Point(657, 456);
+            this.playKnop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.playKnop.Name = "playKnop";
-            this.playKnop.Size = new System.Drawing.Size(576, 88);
+            this.playKnop.Size = new System.Drawing.Size(768, 108);
             this.playKnop.TabIndex = 0;
             this.playKnop.Text = "Play!";
             this.playKnop.UseVisualStyleBackColor = false;
@@ -51,11 +52,12 @@ namespace Tester
             // leaderboardKnop
             // 
             this.leaderboardKnop.BackColor = System.Drawing.Color.White;
-            this.leaderboardKnop.Font = new System.Drawing.Font("Just Bubble", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leaderboardKnop.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.leaderboardKnop.ForeColor = System.Drawing.Color.Black;
-            this.leaderboardKnop.Location = new System.Drawing.Point(367, 418);
+            this.leaderboardKnop.Location = new System.Drawing.Point(657, 572);
+            this.leaderboardKnop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.leaderboardKnop.Name = "leaderboardKnop";
-            this.leaderboardKnop.Size = new System.Drawing.Size(576, 88);
+            this.leaderboardKnop.Size = new System.Drawing.Size(768, 108);
             this.leaderboardKnop.TabIndex = 3;
             this.leaderboardKnop.Text = "Leaderboard";
             this.leaderboardKnop.UseVisualStyleBackColor = false;
@@ -73,14 +75,15 @@ namespace Tester
             // 
             // MainMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1685, 838);
             this.Controls.Add(this.leaderboardKnop);
             this.Controls.Add(this.ArcadeMenuLabel);
             this.Controls.Add(this.playKnop);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainMenu";
             this.Text = "MainMenu";
             this.TransparencyKey = System.Drawing.SystemColors.Control;
