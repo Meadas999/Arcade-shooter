@@ -13,7 +13,7 @@ namespace Tester
         Zombie Bigzombie = new Zombie(2, zombielijst[1], "Groot");
         Zombie SmallZombie = new Zombie(1, zombielijst[2], "Klein");
         
-        Player speler = new Player("", 3, 0);
+        Player speler = new Player("", 100, 0);
         
        
        
@@ -30,7 +30,8 @@ namespace Tester
             WindowState = FormWindowState.Maximized;
             timersnelheid.Start();
             timerMaker.Start();
-            test1.Text = "Levens: " + "" + speler.Levens;
+            //timeChecker.Start();
+            Healthbar.Value = speler.Levens;
 
             
            
@@ -75,9 +76,9 @@ namespace Tester
         {
             PictureBox pic = sender as PictureBox;
             Bigzombie.Health-- ;
-            
-            label2.Text = $"Score: {speler.Levens}";
-            
+
+            Healthbar.Value = speler.Levens;
+
             if (Bigzombie.Health == 0)
             {
                 pic.Visible = false;
@@ -113,7 +114,7 @@ namespace Tester
 
 
 
-                label2.Text = $"Score: {speler.Levens}";
+                
                 SmallZombie.Health = 1;
             }
 
@@ -133,12 +134,18 @@ namespace Tester
                         pic.Top = 0;
                         if(speler.Levens !=0)
                         {
-                            test1.Text = $"Levens: {--speler.Levens}";
+                            speler.Levens -= 10;
+                            Healthbar.Value = speler.Levens;
+                            if(speler.Levens == 30)
+                            {
+                                Healthbar.SetState(2);
+                            }
                         }
                         else if(speler.Levens <=0 )
                         {
                             gameOver();
                         }
+
                         
 
                     }
@@ -189,6 +196,11 @@ namespace Tester
                 textBox1.Text = Convert.ToString(seconden);
                 seconden = 0;
             }
+        }
+
+        private void timeChecker_Tick(object sender, EventArgs e)
+        {
+            Healthbar.Value = speler.Levens;
         }
     }
 }

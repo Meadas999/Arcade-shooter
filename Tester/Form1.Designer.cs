@@ -31,8 +31,6 @@ namespace Tester
         {
             this.components = new System.ComponentModel.Container();
             this.timersnelheid = new System.Windows.Forms.Timer(this.components);
-            this.test1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.timerMaker = new System.Windows.Forms.Timer(this.components);
             this.timeChecker = new System.Windows.Forms.Timer(this.components);
             this.Healthbar = new System.Windows.Forms.ProgressBar();
@@ -70,9 +68,15 @@ namespace Tester
             this.timerMaker.Interval = 8000;
             this.timerMaker.Tick += new System.EventHandler(this.timerMaker_Tick);
             // 
+            // timeChecker
+            // 
+            this.timeChecker.Tick += new System.EventHandler(this.timeChecker_Tick);
+            // 
             // Healthbar
             // 
-            this.Healthbar.Location = new System.Drawing.Point(561, 33);
+            this.Healthbar.BackColor = System.Drawing.SystemColors.Control;
+            this.Healthbar.ForeColor = System.Drawing.Color.Blue;
+            this.Healthbar.Location = new System.Drawing.Point(401, 58);
             this.Healthbar.Name = "Healthbar";
             this.Healthbar.Size = new System.Drawing.Size(389, 59);
             this.Healthbar.TabIndex = 2;
@@ -94,15 +98,12 @@ namespace Tester
             this.TransparencyKey = System.Drawing.SystemColors.Control;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Timer timersnelheid;
-        public System.Windows.Forms.Label test1;
-        public System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer timerMaker;
         private System.Windows.Forms.Timer timeChecker;
         private System.Windows.Forms.ProgressBar Healthbar;

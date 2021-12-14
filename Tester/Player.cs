@@ -26,11 +26,7 @@ namespace Tester
             this.Naam = naam;        
         }
 
-        public string GiveName()
-        {
-            string naam = Naam;
-            return naam;
-        }
+        
 
 
     }

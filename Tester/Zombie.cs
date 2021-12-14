@@ -23,5 +23,15 @@ namespace Tester
             this.Naam = naam;
             this.Type = type;     
         }
+
+        public int Attack()
+        {
+            ; 
+        }
+
+        public void LoseHealth(int damage)
+        {
+            this.Health -= damage;
+        }
     }
 }
