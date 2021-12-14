@@ -54,7 +54,7 @@ namespace Tester
             // 
             this.Healthbar.BackColor = System.Drawing.SystemColors.Control;
             this.Healthbar.ForeColor = System.Drawing.Color.Blue;
-            this.Healthbar.Location = new System.Drawing.Point(401, 58);
+            this.Healthbar.Location = new System.Drawing.Point(446, 45);
             this.Healthbar.Name = "Healthbar";
             this.Healthbar.Size = new System.Drawing.Size(389, 59);
             this.Healthbar.TabIndex = 2;
