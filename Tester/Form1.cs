@@ -1,7 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
-using System.IO.Ports;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+using System.IO.Ports;
+
 //using System.Timers;
 
 namespace Tester
@@ -23,7 +31,7 @@ namespace Tester
 
         public Form1()
         {
-            port = new SerialPort("COM4", 9600, Parity.None, 8, StopBits.One);
+            //port = new SerialPort("COM4", 9600, Parity.None, 8, StopBits.One);
             InitializeComponent();
             connectMetArduino();
             FormBorderStyle = FormBorderStyle.None;
@@ -161,10 +169,7 @@ namespace Tester
             MakeBigZombie(1, this);
             MakeSmallZombie(5, this);
             //target1();
-            if(seconden >= 5)
-            {
-                textBox1.Text = seconden.ToString();
-            }
+            
         }
         public void MakeTimer()
         {
@@ -179,7 +184,7 @@ namespace Tester
 
         private void MyTimer_Tick(object sender, EventArgs e)
         {
-            seconden++; 
+            
         }
         private void connectMetArduino()
         { 
@@ -190,12 +195,11 @@ namespace Tester
         {
             MakeTimer();
             //port.Write("#T1ON\n");
-            if (seconden == 5)
-            {
+           
+         
                 //port.Write("#T1OF\n");
-                textBox1.Text = Convert.ToString(seconden);
-                seconden = 0;
-            }
+               
+          
         }
 
         private void timeChecker_Tick(object sender, EventArgs e)

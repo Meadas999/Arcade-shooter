@@ -24,10 +24,10 @@ namespace Tester
             this.Type = type;     
         }
 
-        public int Attack()
-        {
-            ; 
-        }
+        //public int Attack()
+        //{
+        //    ; 
+        //}
 
         public void LoseHealth(int damage)
         {

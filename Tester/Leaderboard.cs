@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using MySql.Data;
 
 namespace Tester
 {
@@ -18,6 +19,9 @@ namespace Tester
             InitializeComponent();
         }
 
+
+        LBoard leaderboardK = new LBoard();
+
         private void terugKnop_Click(object sender, EventArgs e)
         {
             MainMenu hoofdmenu = new MainMenu();
@@ -25,6 +29,16 @@ namespace Tester
             hoofdmenu.ShowDialog();
             this.Close();
 
+        }
+
+        private void MakeConnection_Click(object sender, EventArgs e)
+        {
+            leaderboardK.MakeConnection();
+        }
+
+        private void CloseConnectionBTN_Click(object sender, EventArgs e)
+        {
+            leaderboardK.EndConnection();
         }
     }
 }
