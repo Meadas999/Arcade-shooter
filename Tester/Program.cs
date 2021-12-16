@@ -16,7 +16,7 @@ namespace Tester
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Leaderboard());
+            Application.Run(new MainMenu());
         }
     }
 }

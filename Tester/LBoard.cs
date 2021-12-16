@@ -16,7 +16,7 @@ namespace Tester
         public string Naam { get; private set; }
         public int Score { get; set; }
         public int Accuracy { get; set; }
-
+        
         public LBoard(int score, string naam, int accuracy)
         {
             this.Naam = naam;
@@ -28,7 +28,7 @@ namespace Tester
         public LBoard()
         { }
 
-        public void MakeConnection()
+        private void MakeConnection()
         {
             try
             {
@@ -47,11 +47,11 @@ namespace Tester
         }
         
 
-        public void EndConnection()
+        private void EndConnection()
         {
             try
             {
-                this.conn = new MySqlConnection(connectionString);
+                
                 this.conn.Close();
                 Console.WriteLine("Disconnected");
 
@@ -65,23 +65,31 @@ namespace Tester
         public void InsertData(string naam, int score)
         {
             MakeConnection();
-            string selection = "insert into Leaderbord values (@Naam, @Score)"
-            MySqlCommand command = new MySqlCommand(selection, conn);
+            string selection = "INSERT INTO Test.Leaderbord(Naam, Score) VALUES(@Naam, @Score)";
+            MySqlCommand command = new MySqlCommand(selection, this.conn);
             command.Parameters.AddWithValue("@Naam", naam);
             command.Parameters.AddWithValue("@Score", score);
+           
             command.ExecuteNonQuery();
             EndConnection();
         }
 
-        public void UpdateData()
+        public void UpdateData(string naam, int score)
         {
             MakeConnection();
-            string update = "Update Leaderbord set Naam = @Naam, Score = @Score";
-            MySqlCommand Update = new MySqlCommand()
-
-
+            string update = "UPDATE `Leaderbord` SET `Naam`=@Naam,`Score`=@Score WHERE 1";
+            MySqlCommand command = new MySqlCommand(update, conn);
+            command.Parameters.AddWithValue("@Naam", naam);
+            command.Parameters.AddWithValue("@Score", score);
+            
+            
+            
             EndConnection();
         }
 
+        public void GetData()
+        {
+
+        }
     }
 }

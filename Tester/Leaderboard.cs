@@ -31,14 +31,28 @@ namespace Tester
 
         }
 
-        private void MakeConnection_Click(object sender, EventArgs e)
+        private void Leaderboard_Load(object sender, EventArgs e)
         {
-            leaderboardK.MakeConnection();
+            // TODO: This line of code loads data into the 'testDataSet.Leaderbord' table. You can move, or remove it, as needed.
+            this.leaderbordTableAdapter.Fill(this.testDataSet.Leaderbord);
+          
+         
+
         }
 
-        private void CloseConnectionBTN_Click(object sender, EventArgs e)
+        
+
+        private void fillByToolStripButton_Click_1(object sender, EventArgs e)
         {
-            leaderboardK.EndConnection();
+            try
+            {
+                this.leaderbordTableAdapter.FillBy(this.testDataSet.Leaderbord);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }
