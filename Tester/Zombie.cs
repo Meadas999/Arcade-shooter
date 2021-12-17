@@ -11,11 +11,13 @@ using System.Media;
 
 namespace Tester
 {
-    class Zombie
+    public class Zombie
     {
+        
         public int Health { get; set; }
         public string Naam { get; private set; }
         public string Type { get; private set; }
+        Random rnd = new Random();
         public int Strenght { get; private set; }
         
         public Zombie(int health, string naam, string type, int strenght)
@@ -32,6 +34,14 @@ namespace Tester
             return this.Strenght * -1  ;
             
         }
+<<<<<<< HEAD
+
+        public int WillekeurigeLocatie(int x,int y)
+        {
+            return rnd.Next(x,y);
+        }
+=======
+>>>>>>> main
 
         public void LoseHealth(int damage)
         {
