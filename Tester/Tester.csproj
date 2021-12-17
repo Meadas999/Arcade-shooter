@@ -108,6 +108,7 @@
     <Compile Include="Leaderboard.Designer.cs">
       <DependentUpon>Leaderboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Level.cs" />
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
