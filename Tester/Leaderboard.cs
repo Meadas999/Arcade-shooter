@@ -33,7 +33,7 @@ namespace Tester
 
         private void Leaderboard_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'testDataSet.Leaderbord' table. You can move, or remove it, as needed.
+            
             this.leaderbordTableAdapter.Fill(this.testDataSet.Leaderbord);
           
          
@@ -52,6 +52,11 @@ namespace Tester
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

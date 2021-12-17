@@ -16,18 +16,22 @@ namespace Tester
         public int Health { get; set; }
         public string Naam { get; private set; }
         public string Type { get; private set; }
+        public int Strenght { get; private set; }
         
-        public Zombie(int health, string naam, string type)
+        public Zombie(int health, string naam, string type, int strenght)
         {
             this.Health = health;
             this.Naam = naam;
-            this.Type = type;     
+            this.Type = type;
+            this.Strenght = strenght;
         }
 
-        //public int Attack()
-        //{
-        //    ; 
-        //}
+        public int Attack()
+        {
+            
+            return this.Strenght * -1  ;
+            
+        }
 
         public void LoseHealth(int damage)
         {
