@@ -1,8 +1,19 @@
 ﻿using System;
-using System.Drawing;
-using System.IO.Ports;
-using System.Windows.Forms;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+<<<<<<< HEAD
+using System.Collections.Generic;
+=======
+using MySql.Data.MySqlClient;
+using System.IO.Ports;
+
+>>>>>>> main
 //using System.Timers;
 
 namespace Tester
@@ -18,8 +29,12 @@ namespace Tester
         int BigZombieHealth = 0;
         public Form1()
         {
+<<<<<<< HEAD
             SerialPort port;
             port = new SerialPort("COM4", 9600, Parity.None, 8, StopBits.One);
+=======
+            //port = new SerialPort("COM4", 9600, Parity.None, 8, StopBits.One);
+>>>>>>> main
             InitializeComponent();
             connectMetArduino();
             FormBorderStyle = FormBorderStyle.None;
@@ -173,10 +188,14 @@ namespace Tester
             MakeBigZombie(1, this);
             MakeSmallZombie(5, this);
             //target1();
+<<<<<<< HEAD
             //if(seconden >= 5)
             {
                
             }
+=======
+            
+>>>>>>> main
         }
         public void MakeTimer()
         {
@@ -191,7 +210,11 @@ namespace Tester
 
         private void MyTimer_Tick(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             //seconden++; 
+=======
+            
+>>>>>>> main
         }
         private void connectMetArduino()
         { 
@@ -202,11 +225,19 @@ namespace Tester
         {
             MakeTimer();
             //port.Write("#T1ON\n");
+<<<<<<< HEAD
            // if (seconden == 5)
             {
                 //port.Write("#T1OF\n");
                levens--
             }
+=======
+           
+         
+                //port.Write("#T1OF\n");
+               
+          
+>>>>>>> main
         }
 
         private void timeChecker_Tick(object sender, EventArgs e)

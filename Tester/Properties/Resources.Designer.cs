@@ -93,6 +93,16 @@ namespace Tester.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap spaceHD {
+            get {
+                object obj = ResourceManager.GetObject("spaceHD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ZombieCute {
             get {
                 object obj = ResourceManager.GetObject("ZombieCute", resourceCulture);

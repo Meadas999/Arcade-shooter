@@ -30,11 +30,14 @@ namespace Tester
         //{
         //    ; 
         //}
+<<<<<<< HEAD
 
         public int WillekeurigeLocatie(int x,int y)
         {
             return rnd.Next(x,y);
         }
+=======
+>>>>>>> main
 
         public void LoseHealth(int damage)
         {

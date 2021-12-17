@@ -23,8 +23,11 @@ namespace Tester
         {
            CurrentPlayer.Naam = naamConfirmTB.Text;
            Leaderboard leaderboard = new Leaderboard();
-
-
+           LBoard leaderKlasse = new LBoard();
+           
+            MessageBox.Show(CurrentPlayer.Naam + " " + "Score:" + Convert.ToString(CurrentPlayer.Score));
+            leaderKlasse.InsertData(CurrentPlayer.Naam, CurrentPlayer.Score);
+            leaderKlasse.UpdateData(CurrentPlayer.Naam, CurrentPlayer.Score);
             this.Hide();
             leaderboard.ShowDialog();
             this.Close();

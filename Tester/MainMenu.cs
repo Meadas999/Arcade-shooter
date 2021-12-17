@@ -22,6 +22,7 @@ namespace Tester
         private void playKnop_Click(object sender, EventArgs e)
         {
             Form1 game = new Form1();
+
             this.Hide();
             game.ShowDialog();
             this.Close();
@@ -29,10 +30,10 @@ namespace Tester
 
         private void leaderboardKnop_Click(object sender, EventArgs e)
         {
-            Leaderboard leaderboard = new Leaderboard();
+            Leaderboard Leadrboard = new Leaderboard();
 
             this.Hide();
-            leaderboard.ShowDialog();
+            Leadrboard.ShowDialog();
             this.Close();
         }
 
