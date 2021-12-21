@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+<<<<<<< HEAD
 using System.Collections.Generic;
+=======
 using MySql.Data.MySqlClient;
 using System.IO.Ports;
 
@@ -23,20 +25,28 @@ namespace Tester
         Level level = new Level(1, 2,  2, 400,20);
         Player speler = new Player("", 100, 0);
         List<Zombie> zombies = new List<Zombie>();
+         Zombie Bigzombie = new Zombie(2, "", "Groot", 2);
+        Zombie SmallZombie = new Zombie(1, "", "Klein", 1 );
+        bool isConnected = false;
+        SerialPort port;
+        string message;
+        int number = 0;
+
         int BigZombieHealth = 0;
         public Form1()
 
         {
-            SerialPort port;
-            port = new SerialPort("COM4", 9600, Parity.None, 8, StopBits.One);
             InitializeComponent();
             connectMetArduino();
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
+            messageTimer.Start();
+            timer1.Start();
             timersnelheid.Start();
             timerMaker.Start();
            timeChecker.Start();
             Healthbar.Value = speler.Levens;
+           
             Bigzombie = new Zombie(2, zombielijst[1], "Groot");
             SmallZombie = new Zombie(1, zombielijst[2], "Klein");
             timersnelheid.Interval = level.snelheid; 
@@ -128,6 +138,18 @@ namespace Tester
             this.Close();
         }
 
+        void p_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+
+            var serial = (SerialPort)sender;
+
+             message = serial.ReadExisting();
+
+            
+           
+
+        }
+
         void Smallzombie_Click(object sender, EventArgs e)
         {
             PictureBox pic = sender as PictureBox;
@@ -212,28 +234,92 @@ namespace Tester
             //seconden++; 
         }
         private void connectMetArduino()
-        { 
-            //port.Open();
-            //port.Write("#STAR\n");
-        } 
-        private void target1()
         {
-            MakeTimer();
-            //port.Write("#T1ON\n");
-
-            //if (seconden == 5)
+            isConnected = true;
+            string selectedPort = "COM14";
+            try
             {
-                //port.Write("#T1OF\n");
-                speler.Levens -= 10;
+                port = new SerialPort(selectedPort, 9600, Parity.None, 8, StopBits.One);
+                //port.DataReceived += new SerialDataReceivedEventHandler(p_DataReceived);
+                port.Open();
+
             }
-                //port.Write("#T1OF\n");
+            catch (Exception es)
+            {
+                MessageBox.Show("Failed to connect");
+            }
+        } 
+        
+
+        private void GetPhysicalZombies()
+        {
+            do
+            {
+                number++;
+                port.Write("#TARG" + number + "\n");
+                message = port.ReadExisting();
+                //MessageBox.Show("#TARG" + number + "\n");
+                //MessageBox.Show(message, number.ToString());
+                
+            } while (number <= 3);
+           
+            if (number == 3)
+            {
+                number = 1;
+
+            }
+
+
+        }
+
+        private void SpawnZombie()
+        {
+            GetPhysicalZombies();
+            //for (int i = 1; i <= 2; i++)
+            //{
+               
+                
+            //   // MessageBox.Show("test");
+            //}
+           
+
         }
 
         private void timeChecker_Tick(object sender, EventArgs e)
         {
             Healthbar.Value = speler.Levens;
-        } 
-        
-        
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (isConnected)
+            {
+                SpawnZombie();
+                timer1.Stop();
+            }
+           
+            
+        }
+        private void checkDamage()
+        {
+            // MessageBox.Show(message);
+            message = port.ReadExisting();
+            if (message != "")
+            {
+                //int begin = message.IndexOf("$");
+                //int end = message.IndexOf("%");
+                //string hit = message.Substring(begin, end);
+                if (message.Contains("HIT"))
+                {
+                    //MessageBox.Show("hit");
+                    speler.Score += 10;
+                }
+            }
+        }
+
+        private void messageTimer_Tick(object sender, EventArgs e)
+        {
+                checkDamage();
+        }
     }
 }

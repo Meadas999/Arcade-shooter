@@ -34,6 +34,9 @@ namespace Tester
             this.timerMaker = new System.Windows.Forms.Timer(this.components);
             this.timeChecker = new System.Windows.Forms.Timer(this.components);
             this.Healthbar = new System.Windows.Forms.ProgressBar();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.cooldownTimer = new System.Windows.Forms.Timer(this.components);
+            this.messageTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // timersnelheid
@@ -62,6 +65,20 @@ namespace Tester
             this.Healthbar.TabIndex = 2;
             this.Healthbar.Value = 20;
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // cooldownTimer
+            // 
+            this.cooldownTimer.Interval = 5000;
+            // 
+            // messageTimer
+            // 
+            this.messageTimer.Interval = 500;
+            this.messageTimer.Tick += new System.EventHandler(this.messageTimer_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -84,6 +101,9 @@ namespace Tester
         private System.Windows.Forms.Timer timersnelheid;
         private System.Windows.Forms.Timer timeChecker;
         private System.Windows.Forms.ProgressBar Healthbar;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer cooldownTimer;
+        private System.Windows.Forms.Timer messageTimer;
         public System.Windows.Forms.Timer timerMaker;
     }
 }

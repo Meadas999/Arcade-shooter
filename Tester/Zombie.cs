@@ -41,6 +41,7 @@ namespace Tester
             return rnd.Next(x,y);
         }
 
+
         public void LoseHealth(int damage)
         {
             this.Health -= damage;
