@@ -7,14 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-<<<<<<< HEAD
 using System.Collections.Generic;
-=======
 using MySql.Data.MySqlClient;
 using System.IO.Ports;
 
->>>>>>> main
-//using System.Timers;
 
 namespace Tester
 {
@@ -24,28 +20,26 @@ namespace Tester
         Random random = new Random();
         Zombie Bigzombie;
         Zombie SmallZombie;
+        Level level = new Level(1, 2,  2, 400,20);
         Player speler = new Player("", 100, 0);
         List<Zombie> zombies = new List<Zombie>();
         int BigZombieHealth = 0;
         public Form1()
+
         {
-<<<<<<< HEAD
             SerialPort port;
             port = new SerialPort("COM4", 9600, Parity.None, 8, StopBits.One);
-=======
-            //port = new SerialPort("COM4", 9600, Parity.None, 8, StopBits.One);
->>>>>>> main
             InitializeComponent();
             connectMetArduino();
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
             timersnelheid.Start();
             timerMaker.Start();
-            //timeChecker.Start();
+           timeChecker.Start();
             Healthbar.Value = speler.Levens;
             Bigzombie = new Zombie(2, zombielijst[1], "Groot");
             SmallZombie = new Zombie(1, zombielijst[2], "Klein");
-
+            timersnelheid.Interval = level.snelheid; 
         }
 
         private void Form1_Load(object sender, EventArgs e) {
@@ -63,14 +57,12 @@ namespace Tester
                 picture.SizeMode = PictureBoxSizeMode.Zoom;
                 picture.Click += Bigzombie_Click;
                 picture.BackColor = Color.Transparent;
-                formInstance.Controls.Add(picture); 
-               
+                formInstance.Controls.Add(picture);  
             }
         }
 
         public void MakeSmallZombie(int aantal, Form formInstance)
         {
-
             for (int i = 0; i < aantal; i++)
             {
                 PictureBox picture = new PictureBox();
@@ -80,9 +72,36 @@ namespace Tester
                 picture.SizeMode = PictureBoxSizeMode.Zoom;
                 picture.Click += Smallzombie_Click;
                 picture.BackColor = Color.Transparent;
-                formInstance.Controls.Add(picture); 
-                //picture.Tag
+                //picture.Tag()
+                formInstance.Controls.Add(picture);
             }
+        }
+        public void TestZombie()
+        {
+            PictureBox picture = new PictureBox();
+            while(Overlappen(picture))
+            {
+                picture.Image = Properties.Resources.ZombieCute;
+                picture.Size = new Size(200, 200);
+                picture.Location = new Point(random.Next(1500), 0);
+                picture.SizeMode = PictureBoxSizeMode.Zoom;
+                picture.Click += Smallzombie_Click;
+                picture.BackColor = Color.Transparent; 
+
+                this.Controls.Add(picture);
+            }
+        }
+        public bool Overlappen(PictureBox current)
+        {
+            bool intersect = false;
+            foreach(var pic in returnPictureboxes())
+            {
+                if (current.Bounds.IntersectsWith(pic.Bounds))
+                {
+                    intersect = true;
+                }
+            }
+            return intersect;
         }
         void Bigzombie_Click(object sender, EventArgs e)
         {
@@ -120,15 +139,8 @@ namespace Tester
                 pic.Visible = false;
                 this.Controls.Remove(pic);
                 pic.Dispose();
-
-
-
-                
                 SmallZombie.Health = 1;
             }
-
-            
-
         }
 
         List<PictureBox> returnPictureboxes()
@@ -145,7 +157,7 @@ namespace Tester
             return ret;
         }
 
-        Boolean finishedLevel()
+        public Boolean finishedLevel()
         {
             return returnPictureboxes().Count == 0;
         }
@@ -154,11 +166,10 @@ namespace Tester
         {
             foreach (PictureBox pic in returnPictureboxes())
             {
-
                 pic.Top += 10;
                 if (pic.Top > 600 && pic.Visible == true)
                 {
-                    pic.Top = Level.snelheid;
+                    pic.Top = 10;
                     if(speler.Levens >0)
                     {
                         speler.Levens -= 10;
@@ -172,11 +183,7 @@ namespace Tester
                     {
                         gameOver();
                     }
-
-                        
-
                 }
-                
             }
         }
         private void timersnelheid_Tick(object sender, EventArgs e)
@@ -186,16 +193,8 @@ namespace Tester
         private void timerMaker_Tick(object sender, EventArgs e)
         {
             MakeBigZombie(1, this);
-            MakeSmallZombie(5, this);
-            //target1();
-<<<<<<< HEAD
-            //if(seconden >= 5)
-            {
-               
-            }
-=======
-            
->>>>>>> main
+            MakeSmallZombie(level.aantalZombies, this);
+            target1();
         }
         public void MakeTimer()
         {
@@ -210,11 +209,7 @@ namespace Tester
 
         private void MyTimer_Tick(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             //seconden++; 
-=======
-            
->>>>>>> main
         }
         private void connectMetArduino()
         { 
@@ -225,24 +220,20 @@ namespace Tester
         {
             MakeTimer();
             //port.Write("#T1ON\n");
-<<<<<<< HEAD
-           // if (seconden == 5)
+
+            //if (seconden == 5)
             {
                 //port.Write("#T1OF\n");
-               levens--
+                speler.Levens -= 10;
             }
-=======
-           
-         
                 //port.Write("#T1OF\n");
-               
-          
->>>>>>> main
         }
 
         private void timeChecker_Tick(object sender, EventArgs e)
         {
             Healthbar.Value = speler.Levens;
-        }
+        } 
+        
+        
     }
 }

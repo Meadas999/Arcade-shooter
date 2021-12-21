@@ -18,30 +18,28 @@ namespace Tester
         public string Naam { get; private set; }
         public string Type { get; private set; }
         Random rnd = new Random();
-        public int Strenght { get; private set; }
+        //public int Strenght { get; private set; }
         
-        public Zombie(int health, string naam, string type, int strenght)
+        public Zombie(int health, string naam, string type)
         {
             this.Health = health;
             this.Naam = naam;
             this.Type = type;
-            this.Strenght = strenght;
+            //this.Strenght = strenght;
         }
 
-        public int Attack()
-        {
+        //public int Attack()
+        //{
             
-            return this.Strenght * -1  ;
+        //    //return this.Strenght * -1  ;
             
-        }
-<<<<<<< HEAD
+        //}
+
 
         public int WillekeurigeLocatie(int x,int y)
         {
             return rnd.Next(x,y);
         }
-=======
->>>>>>> main
 
         public void LoseHealth(int damage)
         {

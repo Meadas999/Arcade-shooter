@@ -7,12 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-<<<<<<< HEAD
-//using MySql.Data.MySqlClient;
-=======
+
 using MySql.Data.MySqlClient;
 using MySql.Data;
->>>>>>> main
+
 
 namespace Tester
 {
