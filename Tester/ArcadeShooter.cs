@@ -8,33 +8,33 @@ namespace Tester
 {
     public class Level
     {
+        public int naamLevel { get; set; }
         public int aantalZombies { get; set; }
-     
+        public int aantalTanks { get; set; }
         public int tankLevens { get; set; }
         public int targets { get; set; }
-        public int snelheid { get; set; } 
-        public int nodigeScore { get; set; }
+        public int Snelheid { get; set; }
 
+        private static int volgendeLevel = 1; 
 
-
-
-        public Level(int aantalZombies, int tankLevens, int targets, int snelheid, int nodigeScore)
+        public Level(int aantalZombies, int aantalTanks, int tankLevens, int targets, int snelheid)
         {
             this.aantalZombies = aantalZombies;
-           
+            this.aantalTanks = aantalTanks;
             this.tankLevens = tankLevens;
             this.targets = targets;
-            this.snelheid = snelheid;
-            this.nodigeScore = nodigeScore;
+            this.Snelheid = snelheid;
+            this.naamLevel = volgendeLevel;
+            volgendeLevel++;
         }
 
-        public void nextLevel()
+        public void VolgendeLevel()
         {
+            this.naamLevel++;
             this.aantalZombies += 4;
-            this.nodigeScore += 5;
+            this.aantalTanks += 2;
             this.tankLevens++;
             this.targets++;
-            this.snelheid += 200;
         }
     }
 }

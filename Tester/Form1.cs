@@ -21,23 +21,33 @@ namespace Tester
         Level level = new Level(5,2, 2, 3, 1);
         Player speler = new Player("", 100, 0);
         List<Zombie> zombies = new List<Zombie>();
+        bool isConnected = false;
+        SerialPort port;
+        string message;
         int levendezombies;
 
 
 
         public Form1()
+
         {
-            
+
+            SerialPort port;
+            port = new SerialPort("COM4", 9600, Parity.None, 8, StopBits.One);
+
+            //port = new SerialPort("COM4", 9600, Parity.None, 8, StopBits.One);
+
             InitializeComponent();
             //connectMetArduino();
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
+            messageTimer.Start();
+            timer1.Start();
             timersnelheid.Start();
             timerMaker.Start();
-            
+           timeChecker.Start();
             Healthbar.Value = speler.Levens;
-            
-
+            timersnelheid.Interval = level.snelheid; 
         }
 
 
@@ -79,7 +89,34 @@ namespace Tester
             }
             
 
+      
+        }
+        public void TestZombie()
+        {
+            PictureBox picture = new PictureBox();
+            while(Overlappen(picture))
+            {
+                picture.Image = Properties.Resources.ZombieCute;
+                picture.Size = new Size(200, 200);
+                picture.Location = new Point(random.Next(1500), 0);
+                picture.SizeMode = PictureBoxSizeMode.Zoom;
+                picture.Click += Smallzombie_Click;
+                picture.BackColor = Color.Transparent; 
 
+                this.Controls.Add(picture);
+            }
+        }
+        public bool Overlappen(PictureBox current)
+        {
+            bool intersect = false;
+            foreach(var pic in returnPictureboxes())
+            {
+                if (current.Bounds.IntersectsWith(pic.Bounds))
+                {
+                    intersect = true;
+                }
+            }
+            return intersect;
         }
 
      
@@ -127,23 +164,19 @@ namespace Tester
             this.Close();
         }
 
-        //void Smallzombie_Click(object sender, EventArgs e)
-        //{
-        //    PictureBox pic = sender as PictureBox;
-        //    SmallZombie.Health--;
-            
-        //    if (SmallZombie.Health == 0)
-        //    {
-        //        speler.Score++;
-        //        pic.Visible = false;
-        //        this.Controls.Remove(pic);
-        //        pic.Dispose();
-        //        SmallZombie.Health = 1;
-        //    }
+        void p_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+
+            var serial = (SerialPort)sender;
+
+             message = serial.ReadExisting();
 
             
+           
 
-        //}
+        }
+
+       
 
         List<PictureBox> returnPictureboxes()
         {
@@ -159,7 +192,7 @@ namespace Tester
             return ret;
         }
 
-        Boolean finishedLevel()
+        public Boolean finishedLevel()
         {
             return returnPictureboxes().Count == 0;
         }
@@ -168,7 +201,6 @@ namespace Tester
         {
             foreach (PictureBox pic in returnPictureboxes())
             {
-
                 pic.Top += 10;
                 if (pic.Top > 600 && pic.Visible == true)
                 {
@@ -186,11 +218,7 @@ namespace Tester
                     {
                         gameOver();
                     }
-
-                        
-
                 }
-                
             }
         }
         private void timersnelheid_Tick(object sender, EventArgs e)
@@ -199,9 +227,7 @@ namespace Tester
         }
         private void timerMaker_Tick(object sender, EventArgs e)
         {
-            
-            //MakeSmallZombie(5, this);
-
+            target1();
         }
         public void MakeTimer()
         {
@@ -219,19 +245,92 @@ namespace Tester
 
         }
         private void connectMetArduino()
-        { 
-            //port.Open();
-            //port.Write("#STAR\n");
-        } 
-        private void target1()
         {
-            MakeTimer();
+            isConnected = true;
+            string selectedPort = "COM14";
+            try
+            {
+                port = new SerialPort(selectedPort, 9600, Parity.None, 8, StopBits.One);
+                //port.DataReceived += new SerialDataReceivedEventHandler(p_DataReceived);
+                port.Open();
+
+            }
+            catch (Exception es)
+            {
+                MessageBox.Show("Failed to connect");
+            }
+        } 
+        
+
+        private void GetPhysicalZombies()
+        {
+            do
+            {
+                number++;
+                port.Write("#TARG" + number + "\n");
+                message = port.ReadExisting();
+                //MessageBox.Show("#TARG" + number + "\n");
+                //MessageBox.Show(message, number.ToString());
+                
+            } while (number <= 3);
+           
+            if (number == 3)
+            {
+                number = 1;
+
+            }
+
+
+        }
+
+        private void SpawnZombie()
+        {
+            GetPhysicalZombies();
+            //for (int i = 1; i <= 2; i++)
+            //{
+               
+                
+            //   // MessageBox.Show("test");
+            //}
+           
 
         }
 
         private void timeChecker_Tick(object sender, EventArgs e)
         {
             Healthbar.Value = speler.Levens;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (isConnected)
+            {
+                SpawnZombie();
+                timer1.Stop();
+            }
+           
+            
+        }
+        private void checkDamage()
+        {
+            // MessageBox.Show(message);
+            message = port.ReadExisting();
+            if (message != "")
+            {
+                //int begin = message.IndexOf("$");
+                //int end = message.IndexOf("%");
+                //string hit = message.Substring(begin, end);
+                if (message.Contains("HIT"))
+                {
+                    //MessageBox.Show("hit");
+                    speler.Score += 10;
+                }
+            }
+        }
+
+        private void messageTimer_Tick(object sender, EventArgs e)
+        {
+                checkDamage();
         }
     }
 }

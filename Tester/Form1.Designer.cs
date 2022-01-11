@@ -34,18 +34,22 @@ namespace Tester
             this.timerMaker = new System.Windows.Forms.Timer(this.components);
             this.timeChecker = new System.Windows.Forms.Timer(this.components);
             this.Healthbar = new System.Windows.Forms.ProgressBar();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.cooldownTimer = new System.Windows.Forms.Timer(this.components);
+            this.messageTimer = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // timersnelheid
             // 
-            this.timersnelheid.Interval = 200;
+            this.timersnelheid.Interval = 400;
             this.timersnelheid.Tick += new System.EventHandler(this.timersnelheid_Tick);
             // 
             // timerMaker
             // 
-            this.timerMaker.Interval = 8000;
+            this.timerMaker.Enabled = true;
+            this.timerMaker.Interval = 5000;
             this.timerMaker.Tick += new System.EventHandler(this.timerMaker_Tick);
             // 
             // timeChecker
@@ -56,10 +60,10 @@ namespace Tester
             // 
             this.Healthbar.BackColor = System.Drawing.SystemColors.Control;
             this.Healthbar.ForeColor = System.Drawing.Color.Blue;
-            this.Healthbar.Location = new System.Drawing.Point(334, 37);
-            this.Healthbar.Margin = new System.Windows.Forms.Padding(2);
+            this.Healthbar.Location = new System.Drawing.Point(445, 46);
+            this.Healthbar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Healthbar.Name = "Healthbar";
-            this.Healthbar.Size = new System.Drawing.Size(292, 48);
+            this.Healthbar.Size = new System.Drawing.Size(389, 59);
             this.Healthbar.TabIndex = 2;
             this.Healthbar.Value = 100;
             // 
@@ -85,14 +89,16 @@ namespace Tester
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackgroundImage = global::Tester.Properties.Resources.grass;
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.ClientSize = new System.Drawing.Size(948, 553);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Healthbar);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.TransparencyKey = System.Drawing.SystemColors.Control;
@@ -105,7 +111,6 @@ namespace Tester
         #endregion
 
         private System.Windows.Forms.Timer timersnelheid;
-        private System.Windows.Forms.Timer timerMaker;
         private System.Windows.Forms.Timer timeChecker;
         private System.Windows.Forms.ProgressBar Healthbar;
         private System.Windows.Forms.Label label1;

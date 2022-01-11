@@ -33,21 +33,24 @@ namespace Tester
             this.Health = health;
             this.Naam = naam;
             this.Type = type;
-            this.Strenght = strenght;
+            //this.Strenght = strenght;
         }
 
-        public int Attack()
-        {
+        //public int Attack()
+        //{
             
-            return this.Strenght * -1  ;
+        //    //return this.Strenght * -1  ;
             
-        }
+        
+
+        //}
 
 
         public int WillekeurigeLocatie(int x,int y)
         {
             return rnd.Next(x,y);
         }
+
 
         public void LoseHealth(int damage)
         {
