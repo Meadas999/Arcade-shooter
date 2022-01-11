@@ -37,5 +37,10 @@ namespace Tester
             
 
         }
+
+        private void GameOver_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

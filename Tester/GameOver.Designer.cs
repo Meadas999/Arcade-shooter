@@ -74,6 +74,7 @@ namespace Tester
             this.Controls.Add(this.gameoverPic);
             this.Name = "GameOver";
             this.Text = "GameOver";
+            this.Load += new System.EventHandler(this.GameOver_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gameoverPic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

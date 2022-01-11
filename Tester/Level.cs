@@ -15,6 +15,12 @@ namespace Tester
         public int targets { get; set; }
         public int Snelheid { get; set; }
 
+        public int TotaalZombies()
+        {
+            int aantal = aantalTanks + aantalZombies;
+            return aantal;
+        }
+
         private static int volgendeLevel = 1; 
 
         public Level(int aantalZombies, int aantalTanks, int tankLevens, int targets, int snelheid)

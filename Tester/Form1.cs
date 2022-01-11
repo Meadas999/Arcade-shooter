@@ -7,53 +7,64 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-<<<<<<< HEAD
-using System.Collections.Generic;
-=======
 using MySql.Data.MySqlClient;
 using System.IO.Ports;
 
->>>>>>> main
-//using System.Timers;
+
 
 namespace Tester
 {
     public partial class Form1 : Form
     {
-        string[] zombielijst = { "Ludo", "Sanders", "Jantje" };
+        
         Random random = new Random();
-        Zombie Bigzombie;
-        Zombie SmallZombie;
+        Level level = new Level(5,2, 2, 3, 1);
         Player speler = new Player("", 100, 0);
         List<Zombie> zombies = new List<Zombie>();
-        int BigZombieHealth = 0;
+        int levendezombies;
+
+
+
         public Form1()
         {
-<<<<<<< HEAD
-            SerialPort port;
-            port = new SerialPort("COM4", 9600, Parity.None, 8, StopBits.One);
-=======
-            //port = new SerialPort("COM4", 9600, Parity.None, 8, StopBits.One);
->>>>>>> main
+            
             InitializeComponent();
-            connectMetArduino();
+            //connectMetArduino();
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
             timersnelheid.Start();
             timerMaker.Start();
-            //timeChecker.Start();
+            
             Healthbar.Value = speler.Levens;
-            Bigzombie = new Zombie(2, zombielijst[1], "Groot");
-            SmallZombie = new Zombie(1, zombielijst[2], "Klein");
+            
 
         }
 
-        private void Form1_Load(object sender, EventArgs e) {
-            BigZombieHealth = Bigzombie.Health;
+
+        public void MakeZombiesList(int mini, int big)
+        {
+          
+            for (int i = 0; i < big; i++)
+            {
+                zombies.Add(new Zombie(level.tankLevens, "BigMan" + Convert.ToString(i), "Groot", 2));
+            }
+            for (int i = 0; i < mini; i++)
+            {
+                zombies.Add(new Zombie(1, "SmallMan" + Convert.ToString(i), "Klein", 1));
+            }
+            
+        }
+        public void Form1_Load(object sender, EventArgs e) 
+        {
+            
+            MakeZombiesList(level.aantalZombies, level.aantalTanks);
+            ZombieMaker(level.TotaalZombies(), this, "ZombieDik");
+            int levendezombies = level.aantalTanks + level.aantalZombies;
         }
        
-        public void MakeBigZombie(int aantal, Form formInstance)
+        public void ZombieMaker(int aantal, Form formInstance, string ZombieDik)
         {
+            
             for (int i = 0; i < aantal; i++)
             {              
                 PictureBox picture = new PictureBox();
@@ -61,43 +72,50 @@ namespace Tester
                 picture.Size = new Size(200, 200);
                 picture.Location = new Point(random.Next(1500), 0);
                 picture.SizeMode = PictureBoxSizeMode.Zoom;
-                picture.Click += Bigzombie_Click;
+                picture.Click += zombie_Click;
                 picture.BackColor = Color.Transparent;
-                formInstance.Controls.Add(picture); 
-               
+                formInstance.Controls.Add(picture);
+                picture.Tag = zombies[i];
             }
+            
+
+
         }
 
-        public void MakeSmallZombie(int aantal, Form formInstance)
+     
+        void zombie_Click(object sender, EventArgs e)
         {
 
-            for (int i = 0; i < aantal; i++)
-            {
-                PictureBox picture = new PictureBox();
-                picture.Image = Properties.Resources.ZombieCute;
-                picture.Size = new Size(200, 200);
-                picture.Location = new Point(random.Next(1500), 0);
-                picture.SizeMode = PictureBoxSizeMode.Zoom;
-                picture.Click += Smallzombie_Click;
-                picture.BackColor = Color.Transparent;
-                formInstance.Controls.Add(picture); 
-                //picture.Tag
-            }
-        }
-        void Bigzombie_Click(object sender, EventArgs e)
-        {
             PictureBox pic = sender as PictureBox;
-            BigZombieHealth-- ;
-            Healthbar.Value = speler.Levens;
+            Zombie temp = pic.Tag as Zombie;
+            
 
-            if (BigZombieHealth == 0)
+
+            temp.Health-- ;
+            Healthbar.Value = speler.Levens;
+            
+            if (temp.Health == 0)
             {
                 pic.Visible = false;
                 this.Controls.Remove(pic);
                 pic.Dispose();
+                levendezombies++;
+
                 speler.Score++;
-                BigZombieHealth = Bigzombie.Health;
+                
             }
+
+            if (levendezombies == level.TotaalZombies())
+            {
+                zombies.Clear();
+                level.VolgendeLevel();
+                MakeZombiesList(level.aantalZombies, level.aantalTanks);
+                ZombieMaker(level.TotaalZombies(), this, "ZombieDik");
+                levendezombies = 0;
+                
+            }  
+            
+
         }
         
 
@@ -109,27 +127,23 @@ namespace Tester
             this.Close();
         }
 
-        void Smallzombie_Click(object sender, EventArgs e)
-        {
-            PictureBox pic = sender as PictureBox;
-            SmallZombie.Health--;
+        //void Smallzombie_Click(object sender, EventArgs e)
+        //{
+        //    PictureBox pic = sender as PictureBox;
+        //    SmallZombie.Health--;
             
-            if (SmallZombie.Health == 0)
-            {
-                speler.Score++;
-                pic.Visible = false;
-                this.Controls.Remove(pic);
-                pic.Dispose();
-
-
-
-                
-                SmallZombie.Health = 1;
-            }
+        //    if (SmallZombie.Health == 0)
+        //    {
+        //        speler.Score++;
+        //        pic.Visible = false;
+        //        this.Controls.Remove(pic);
+        //        pic.Dispose();
+        //        SmallZombie.Health = 1;
+        //    }
 
             
 
-        }
+        //}
 
         List<PictureBox> returnPictureboxes()
         {
@@ -158,12 +172,12 @@ namespace Tester
                 pic.Top += 10;
                 if (pic.Top > 600 && pic.Visible == true)
                 {
-                    pic.Top = Level.snelheid;
+                    pic.Top = 10;
                     if(speler.Levens >0)
                     {
                         speler.Levens -= 10;
                         Healthbar.Value = speler.Levens;
-                        if(speler.Levens == 30)
+                        if(speler.Levens <= 31)
                         {
                             Healthbar.SetState(2);
                         }
@@ -185,17 +199,9 @@ namespace Tester
         }
         private void timerMaker_Tick(object sender, EventArgs e)
         {
-            MakeBigZombie(1, this);
-            MakeSmallZombie(5, this);
-            //target1();
-<<<<<<< HEAD
-            //if(seconden >= 5)
-            {
-               
-            }
-=======
             
->>>>>>> main
+            //MakeSmallZombie(5, this);
+
         }
         public void MakeTimer()
         {
@@ -210,11 +216,7 @@ namespace Tester
 
         private void MyTimer_Tick(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            //seconden++; 
-=======
-            
->>>>>>> main
+
         }
         private void connectMetArduino()
         { 
@@ -224,20 +226,7 @@ namespace Tester
         private void target1()
         {
             MakeTimer();
-            //port.Write("#T1ON\n");
-<<<<<<< HEAD
-           // if (seconden == 5)
-            {
-                //port.Write("#T1OF\n");
-               levens--
-            }
-=======
-           
-         
-                //port.Write("#T1OF\n");
-               
-          
->>>>>>> main
+
         }
 
         private void timeChecker_Tick(object sender, EventArgs e)
