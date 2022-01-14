@@ -31,26 +31,15 @@ namespace Tester
         {
             this.components = new System.ComponentModel.Container();
             this.timersnelheid = new System.Windows.Forms.Timer(this.components);
-            this.timerMaker = new System.Windows.Forms.Timer(this.components);
             this.timeChecker = new System.Windows.Forms.Timer(this.components);
             this.Healthbar = new System.Windows.Forms.ProgressBar();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.cooldownTimer = new System.Windows.Forms.Timer(this.components);
-            this.messageTimer = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // timersnelheid
             // 
             this.timersnelheid.Interval = 400;
             this.timersnelheid.Tick += new System.EventHandler(this.timersnelheid_Tick);
-            // 
-            // timerMaker
-            // 
-            this.timerMaker.Enabled = true;
-            this.timerMaker.Interval = 5000;
-            this.timerMaker.Tick += new System.EventHandler(this.timerMaker_Tick);
             // 
             // timeChecker
             // 
@@ -60,10 +49,10 @@ namespace Tester
             // 
             this.Healthbar.BackColor = System.Drawing.SystemColors.Control;
             this.Healthbar.ForeColor = System.Drawing.Color.Blue;
-            this.Healthbar.Location = new System.Drawing.Point(445, 46);
-            this.Healthbar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Healthbar.Location = new System.Drawing.Point(187, 30);
+            this.Healthbar.Margin = new System.Windows.Forms.Padding(2);
             this.Healthbar.Name = "Healthbar";
-            this.Healthbar.Size = new System.Drawing.Size(389, 59);
+            this.Healthbar.Size = new System.Drawing.Size(292, 48);
             this.Healthbar.TabIndex = 2;
             this.Healthbar.Value = 100;
             // 
@@ -71,34 +60,22 @@ namespace Tester
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(700, 37);
+            this.label1.Location = new System.Drawing.Point(525, 30);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "label1";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(775, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "label2";
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackgroundImage = global::Tester.Properties.Resources.grass;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.ClientSize = new System.Drawing.Size(948, 553);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(711, 449);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Healthbar);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.TransparencyKey = System.Drawing.SystemColors.Control;
@@ -114,7 +91,6 @@ namespace Tester
         private System.Windows.Forms.Timer timeChecker;
         private System.Windows.Forms.ProgressBar Healthbar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
     }
 }
 

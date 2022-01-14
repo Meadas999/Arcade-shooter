@@ -41,10 +41,10 @@ namespace Tester
             //connectMetArduino();
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
-            messageTimer.Start();
-            timer1.Start();
+            
+            
             timersnelheid.Start();
-            timerMaker.Start();
+            
            timeChecker.Start();
             Healthbar.Value = speler.Levens;
             timersnelheid.Interval = level.snelheid; 
@@ -76,48 +76,36 @@ namespace Tester
         {
             
             for (int i = 0; i < aantal; i++)
-            {              
-                PictureBox picture = new PictureBox();
-                picture.Image = Properties.Resources.ZombieDik;
-                picture.Size = new Size(200, 200);
-                picture.Location = new Point(random.Next(1500), 0);
-                picture.SizeMode = PictureBoxSizeMode.Zoom;
-                picture.Click += zombie_Click;
-                picture.BackColor = Color.Transparent;
-                formInstance.Controls.Add(picture);
-                picture.Tag = zombies[i];
+            {
+                    PictureBox picture = new PictureBox();
+             
+                    picture.Image = Properties.Resources.ZombieDik;
+                    picture.Size = new Size(200, 200);
+                    picture.Location = new Point(random.Next(1500), 0);
+                    picture.SizeMode = PictureBoxSizeMode.Zoom;
+                    picture.Click += zombie_Click;
+                    picture.BackColor = Color.Transparent;
+                    formInstance.Controls.Add(picture);
+                    picture.Tag = zombies[i];
+              
             }
             
 
       
         }
-        public void TestZombie()
-        {
-            PictureBox picture = new PictureBox();
-            while(Overlappen(picture))
-            {
-                picture.Image = Properties.Resources.ZombieCute;
-                picture.Size = new Size(200, 200);
-                picture.Location = new Point(random.Next(1500), 0);
-                picture.SizeMode = PictureBoxSizeMode.Zoom;
-                picture.Click += Smallzombie_Click;
-                picture.BackColor = Color.Transparent; 
-
-                this.Controls.Add(picture);
-            }
-        }
-        public bool Overlappen(PictureBox current)
-        {
-            bool intersect = false;
-            foreach(var pic in returnPictureboxes())
-            {
-                if (current.Bounds.IntersectsWith(pic.Bounds))
-                {
-                    intersect = true;
-                }
-            }
-            return intersect;
-        }
+      
+        //public bool Overlappen(PictureBox current)
+        //{
+        //    bool intersect = false;
+        //    foreach(var pic in returnPictureboxes())
+        //    {
+        //        if (current.Bounds.IntersectsWith(pic.Bounds))
+        //        {
+        //            intersect = true;
+        //        }
+        //    }
+        //    return intersect;
+        //}
 
      
         void zombie_Click(object sender, EventArgs e)
@@ -125,9 +113,7 @@ namespace Tester
 
             PictureBox pic = sender as PictureBox;
             Zombie temp = pic.Tag as Zombie;
-            
-
-
+ 
             temp.Health-- ;
             Healthbar.Value = speler.Levens;
             
@@ -178,45 +164,49 @@ namespace Tester
 
        
 
-        List<PictureBox> returnPictureboxes()
+        //List<PictureBox> returnPictureboxes()
+        //{
+        //    List<PictureBox> ret = new List<PictureBox>();
+        //    foreach (Control control in Controls)
+        //    {
+        //        PictureBox pic = control as PictureBox;
+        //        if (pic != null)
+        //        {
+        //            ret.Add(pic);
+        //        }
+        //    }
+        //    return ret;
+        //}
+
+        //public Boolean finishedLevel()
+        //{
+        //    return returnPictureboxes().Count == 0;
+        //}
+
+        public void ZombieSnelheid()
         {
-            List<PictureBox> ret = new List<PictureBox>();
             foreach (Control control in Controls)
             {
                 PictureBox pic = control as PictureBox;
                 if (pic != null)
                 {
-                    ret.Add(pic);
-                }
-            }
-            return ret;
-        }
-
-        public Boolean finishedLevel()
-        {
-            return returnPictureboxes().Count == 0;
-        }
-
-        public void ZombieSnelheid()
-        {
-            foreach (PictureBox pic in returnPictureboxes())
-            {
-                pic.Top += 10;
-                if (pic.Top > 600 && pic.Visible == true)
-                {
-                    pic.Top = 10;
-                    if(speler.Levens >0)
+                    pic.Top += 10;
+                    if (pic.Top > 600 && pic.Visible == true)
                     {
-                        speler.Levens -= 10;
-                        Healthbar.Value = speler.Levens;
-                        if(speler.Levens <= 31)
+                        pic.Top = 10;
+                        if (speler.Levens > 0)
                         {
-                            Healthbar.SetState(2);
+                            speler.Levens -= 10;
+                            Healthbar.Value = speler.Levens;
+                            if (speler.Levens <= 31)
+                            {
+                                Healthbar.SetState(2);
+                            }
                         }
-                    }
-                    else
-                    {
-                        gameOver();
+                        else
+                        {
+                            gameOver();
+                        }
                     }
                 }
             }
@@ -227,7 +217,7 @@ namespace Tester
         }
         private void timerMaker_Tick(object sender, EventArgs e)
         {
-            target1();
+            
         }
         public void MakeTimer()
         {
@@ -262,30 +252,30 @@ namespace Tester
         } 
         
 
-        private void GetPhysicalZombies()
-        {
-            do
-            {
-                number++;
-                port.Write("#TARG" + number + "\n");
-                message = port.ReadExisting();
-                //MessageBox.Show("#TARG" + number + "\n");
-                //MessageBox.Show(message, number.ToString());
+        //private void GetPhysicalZombies()
+        //{
+        //    do
+        //    {
+        //        number++;
+        //        port.Write("#TARG" + number + "\n");
+        //        message = port.ReadExisting();
+        //        //MessageBox.Show("#TARG" + number + "\n");
+        //        //MessageBox.Show(message, number.ToString());
                 
-            } while (number <= 3);
+        //    } while (number <= 3);
            
-            if (number == 3)
-            {
-                number = 1;
+        //    if (number == 3)
+        //    {
+        //        number = 1;
 
-            }
+        //    }
 
 
-        }
+        //}
 
         private void SpawnZombie()
         {
-            GetPhysicalZombies();
+            //GetPhysicalZombies();
             //for (int i = 1; i <= 2; i++)
             //{
                
@@ -306,7 +296,7 @@ namespace Tester
             if (isConnected)
             {
                 SpawnZombie();
-                timer1.Stop();
+                
             }
            
             
