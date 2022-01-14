@@ -41,7 +41,7 @@ namespace Tester
             //connectMetArduino();
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
-            
+
             
             timersnelheid.Start();
             
@@ -62,11 +62,11 @@ namespace Tester
             {
                 zombies.Add(new Zombie(1, "SmallMan" + Convert.ToString(i), "Klein", 1));
             }
-            
+            LevelLbl.Text = "Level:" + "" + level.level.ToString();
         }
         public void Form1_Load(object sender, EventArgs e) 
         {
-            
+            LevelLbl.Text = "Level:" + "" + level.level.ToString();
             MakeZombiesList(level.aantalZombies, level.aantalTanks);
             ZombieMaker(level.TotaalZombies(), this, "ZombieDik");
             int levendezombies = level.aantalTanks + level.aantalZombies;

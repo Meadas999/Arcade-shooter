@@ -11,7 +11,7 @@ namespace Tester
         public string Naam {get; set;} 
         public int Levens { get; set; }
         public int Score { get; set; }
-        public int Credits { get; set; }
+        
 
         public Player(string naam, int levens, int score)
         {

@@ -33,7 +33,7 @@ namespace Tester
             this.timersnelheid = new System.Windows.Forms.Timer(this.components);
             this.timeChecker = new System.Windows.Forms.Timer(this.components);
             this.Healthbar = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LevelLbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // timersnelheid
@@ -56,16 +56,16 @@ namespace Tester
             this.Healthbar.TabIndex = 2;
             this.Healthbar.Value = 100;
             // 
-            // label1
+            // LevelLbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(525, 30);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "label1";
+            this.LevelLbl.AutoSize = true;
+            this.LevelLbl.BackColor = System.Drawing.Color.White;
+            this.LevelLbl.Location = new System.Drawing.Point(525, 30);
+            this.LevelLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LevelLbl.Name = "LevelLbl";
+            this.LevelLbl.Size = new System.Drawing.Size(35, 13);
+            this.LevelLbl.TabIndex = 3;
+            this.LevelLbl.Text = "label1";
             // 
             // Form1
             // 
@@ -74,7 +74,7 @@ namespace Tester
             this.AutoSize = true;
             this.BackgroundImage = global::Tester.Properties.Resources.grass;
             this.ClientSize = new System.Drawing.Size(711, 449);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LevelLbl);
             this.Controls.Add(this.Healthbar);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -90,7 +90,7 @@ namespace Tester
         private System.Windows.Forms.Timer timersnelheid;
         private System.Windows.Forms.Timer timeChecker;
         private System.Windows.Forms.ProgressBar Healthbar;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LevelLbl;
     }
 }
 

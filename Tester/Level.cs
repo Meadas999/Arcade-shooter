@@ -13,6 +13,8 @@ namespace Tester
         public int tankLevens { get; set; }
         public int targets { get; set; }
         public int snelheid { get; set; } 
+
+        public int level { get; set; }
         
         
 
@@ -26,6 +28,7 @@ namespace Tester
             this.tankLevens = tankLevens;
             this.targets = targets;
             this.snelheid = snelheid;
+            this.level = 1;
             
         }
 
@@ -36,6 +39,7 @@ namespace Tester
             this.tankLevens++;
             this.targets++;
             this.snelheid += 200;
+            this.level++;
         }
 
         public int TotaalZombies()
