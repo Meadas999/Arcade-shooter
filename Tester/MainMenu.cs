@@ -24,7 +24,7 @@ namespace Tester
             Form1 game = new Form1();
 
             this.Hide();
-            game.ShowDialog();
+             game.ShowDialog();
             this.Close();
         }
 

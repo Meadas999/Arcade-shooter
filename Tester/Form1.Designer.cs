@@ -33,6 +33,12 @@ namespace Tester
             this.timersnelheid = new System.Windows.Forms.Timer(this.components);
             this.timeChecker = new System.Windows.Forms.Timer(this.components);
             this.Healthbar = new System.Windows.Forms.ProgressBar();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.cooldownTimer = new System.Windows.Forms.Timer(this.components);
+            this.messageTimer = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.LevelLbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -90,6 +96,13 @@ namespace Tester
         private System.Windows.Forms.Timer timersnelheid;
         private System.Windows.Forms.Timer timeChecker;
         private System.Windows.Forms.ProgressBar Healthbar;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer cooldownTimer;
+        private System.Windows.Forms.Timer messageTimer;
+        public System.Windows.Forms.Timer timerMaker;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label LevelLbl;
     }
 }
