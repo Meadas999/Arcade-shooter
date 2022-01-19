@@ -47,8 +47,8 @@ namespace Tester
 
             
             timersnelheid.Start();
+            messageTimer.Start();
             timer1.Start();
-           timeChecker.Start();
             Healthbar.Value = speler.Levens;
             timersnelheid.Interval = level.snelheid; 
         }
@@ -254,30 +254,56 @@ namespace Tester
             }
         }
 
-
         private void GetPhysicalZombies()
         {
             do
             {
                 number++;
                 port.Write("#TARG" + number + "\n");
+                if (number > 2)
+                {
+                    
+                    //MessageBox.Show("#TARG" + number + "\n");
+                    break;
+                }
                 message = port.ReadExisting();
-                //MessageBox.Show("#TARG" + number + "\n");
-                //MessageBox.Show(message, number.ToString());
 
-            } while (number <= 3);
+            } while (number <= 2);
 
-            if (number == 3)
+            if(number == 2)
             {
-                number = 1;
-
+                number = 0;    
             }
-
-
         }
+
+        //private void GetPhysicalZombies()
+        //{
+        //    do
+        //    {
+        //        number++;
+        //        port.Write("#TARG" + number + "\n");
+        //        message = port.ReadExisting();
+               
+        //        MessageBox.Show(message, number.ToString());
+
+
+        //    } while (number < 3);
+        //    MessageBox.Show("#TARG" + number + "\n");
+
+        //    if (number == 2)
+        //    {
+        //        MessageBox.Show("stop");
+        //        number = 0;
+        //        timer1.Stop();
+
+        //    }
+
+
+        //}
 
         private void SpawnZombie()
         {
+            
             GetPhysicalZombies();
             //for (int i = 1; i <= 2; i++)
             //{
@@ -316,11 +342,14 @@ namespace Tester
                 checkDamage();
         }
 
-        private void timer1_Tick_1(object sender, EventArgs e)
+      
+
+        private void timer1_Tick(object sender, EventArgs e)
         {
             if (isConnected)
             {
                 SpawnZombie();
+                timer1.Stop();
 
             }
         }
