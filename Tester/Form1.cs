@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using MySql.Data.MySqlClient;
 using System.IO.Ports;
 
@@ -26,6 +27,7 @@ namespace Tester
         SerialPort port;
         string message;
         int levendezombies;
+        int number = 0;
 
 
 
@@ -39,14 +41,14 @@ namespace Tester
             //port = new SerialPort("COM4", 9600, Parity.None, 8, StopBits.One);
 
             InitializeComponent();
-            //connectMetArduino();
+            connectMetArduino();
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
 
             
             timersnelheid.Start();
-            
-           timeChecker.Start();
+            messageTimer.Start();
+            timer1.Start();
             Healthbar.Value = speler.Levens;
             timersnelheid.Interval = level.snelheid; 
         }
@@ -225,7 +227,7 @@ namespace Tester
         private void connectMetArduino()
         {
             isConnected = true;
-            string selectedPort = "COM14";
+            string selectedPort = "COM4";
             try
             {
                 port = new SerialPort(selectedPort, 9600, Parity.None, 8, StopBits.One);
@@ -239,6 +241,47 @@ namespace Tester
             }
         }
 
+        private void GetPhysicalZombies()
+        {
+            do
+            {
+                number++;
+                port.Write("#TARG" + number + "\n");
+                if (number > 2)
+                {
+                    
+                    //MessageBox.Show("#TARG" + number + "\n");
+                    break;
+                }
+                message = port.ReadExisting();
+
+            } while (number <= 2);
+
+            if(number == 2)
+            {
+                number = 0;    
+            }
+        }
+
+        //private void GetPhysicalZombies()
+        //{
+        //    do
+        //    {
+        //        number++;
+        //        port.Write("#TARG" + number + "\n");
+        //        message = port.ReadExisting();
+               
+        //        MessageBox.Show(message, number.ToString());
+
+
+        //    } while (number < 3);
+        //    MessageBox.Show("#TARG" + number + "\n");
+
+        //    if (number == 2)
+        //    {
+        //        MessageBox.Show("stop");
+        //        number = 0;
+        //        timer1.Stop();
 
         private void GetPhysicalZombies(int number)
         {
@@ -263,11 +306,14 @@ namespace Tester
 
         private void SpawnZombie()
         {
-            GetPhysicalZombies(random.Next(3));
-            for (int i = 1; i <= 2; i++)
-            {
-                // MessageBox.Show("test");
-            }
+            
+            GetPhysicalZombies();
+            //for (int i = 1; i <= 2; i++)
+            //{
+
+
+            //   // MessageBox.Show("test");
+            //}
 
 
         }
@@ -277,16 +323,7 @@ namespace Tester
             Healthbar.Value = speler.Levens;
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (isConnected)
-            {
-                SpawnZombie();
-                
-            }
-           
-            
-        }
+       
         private void checkDamage()
         {
             // MessageBox.Show(message);
@@ -307,6 +344,18 @@ namespace Tester
         private void messageTimer_Tick(object sender, EventArgs e)
         {
                 checkDamage();
+        }
+
+      
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (isConnected)
+            {
+                SpawnZombie();
+                timer1.Stop();
+
+            }
         }
     }
 }
