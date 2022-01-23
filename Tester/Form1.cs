@@ -20,7 +20,8 @@ namespace Tester
         Random random = new Random();
         Level level = new Level(5,2, 2, 3, 1);
         Player speler = new Player("", 100, 0);
-        List<Zombie> zombies = new List<Zombie>();
+        public List<Zombie> zombies = new List<Zombie>();
+        public List<PictureBox> _pictureBoxes = new List<PictureBox>();
         bool isConnected = false;
         SerialPort port;
         string message;
@@ -75,13 +76,28 @@ namespace Tester
         public void ZombieMaker(int aantal, Form formInstance, string ZombieDik)
         {
             
-            for (int i = 0; i < aantal; i++)
-            {
-                    PictureBox picture = new PictureBox();
-             
+                for (int i = 0; i < aantal; i++)
+                 {
+                Rectangle newPosition;
+
+                do
+                {
+                    var newPoint = new Point(random.Next(1500), random.Next(-1200,0));
+                    var newSize = new Size(200, 200);
+
+                    newPosition = new Rectangle(newPoint, newSize);
+                } while (_pictureBoxes.Any(x => x.Bounds.IntersectsWith(newPosition)));
+               
+
+
+                PictureBox picture = new PictureBox();
+                
+                _pictureBoxes.Add(picture);
+
                     picture.Image = Properties.Resources.ZombieDik;
-                    picture.Size = new Size(200, 200);
-                    picture.Location = new Point(random.Next(1500), 0);
+                    picture.Size = newPosition.Size;
+                    //picture.Location = new Point(picture.Width * i, random.Next(-100, 0));
+                    picture.Location = newPosition.Location;
                     picture.SizeMode = PictureBoxSizeMode.Zoom;
                     picture.Click += zombie_Click;
                     picture.BackColor = Color.Transparent;
@@ -94,21 +110,8 @@ namespace Tester
       
         }
       
-        //public bool Overlappen(PictureBox current)
-        //{
-        //    bool intersect = false;
-        //    foreach(var pic in returnPictureboxes())
-        //    {
-        //        if (current.Bounds.IntersectsWith(pic.Bounds))
-        //        {
-        //            intersect = true;
-        //        }
-        //    }
-        //    return intersect;
-        //}
 
-     
-        void zombie_Click(object sender, EventArgs e)
+        public void zombie_Click(object sender, EventArgs e)
         {
 
             PictureBox pic = sender as PictureBox;
@@ -119,6 +122,7 @@ namespace Tester
             
             if (temp.Health == 0)
             {
+                
                 pic.Visible = false;
                 this.Controls.Remove(pic);
                 pic.Dispose();
@@ -131,6 +135,9 @@ namespace Tester
             if (levendezombies == level.TotaalZombies())
             {
                 zombies.Clear();
+                //_pictureBoxes.Clear();
+                _pictureBoxes.Clear();
+                
                 level.VolgendeLevel();
                 MakeZombiesList(level.aantalZombies, level.aantalTanks);
                 ZombieMaker(level.TotaalZombies(), this, "ZombieDik");
@@ -162,26 +169,7 @@ namespace Tester
 
         }
 
-       
-
-        //List<PictureBox> returnPictureboxes()
-        //{
-        //    List<PictureBox> ret = new List<PictureBox>();
-        //    foreach (Control control in Controls)
-        //    {
-        //        PictureBox pic = control as PictureBox;
-        //        if (pic != null)
-        //        {
-        //            ret.Add(pic);
-        //        }
-        //    }
-        //    return ret;
-        //}
-
-        //public Boolean finishedLevel()
-        //{
-        //    return returnPictureboxes().Count == 0;
-        //}
+      
 
         public void ZombieSnelheid()
         {
@@ -249,40 +237,38 @@ namespace Tester
             {
                 MessageBox.Show("Failed to connect");
             }
-        } 
-        
-
-        //private void GetPhysicalZombies()
-        //{
-        //    do
-        //    {
-        //        number++;
-        //        port.Write("#TARG" + number + "\n");
-        //        message = port.ReadExisting();
-        //        //MessageBox.Show("#TARG" + number + "\n");
-        //        //MessageBox.Show(message, number.ToString());
-                
-        //    } while (number <= 3);
-           
-        //    if (number == 3)
-        //    {
-        //        number = 1;
-
-        //    }
+        }
 
 
-        //}
+        private void GetPhysicalZombies(int number)
+        {
+            do
+            {
+                number++;
+                port.Write("#TARG" + number + "\n");
+                message = port.ReadExisting();
+                //MessageBox.Show("#TARG" + number + "\n");
+                //MessageBox.Show(message, number.ToString());
+
+            } while (number <= 3);
+
+            if (number == 3)
+            {
+                number = 1;
+
+            }
+
+
+        }
 
         private void SpawnZombie()
         {
-            //GetPhysicalZombies();
-            //for (int i = 1; i <= 2; i++)
-            //{
-               
-                
-            //   // MessageBox.Show("test");
-            //}
-           
+            GetPhysicalZombies(random.Next(3));
+            for (int i = 1; i <= 2; i++)
+            {
+                // MessageBox.Show("test");
+            }
+
 
         }
 

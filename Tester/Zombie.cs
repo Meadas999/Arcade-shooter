@@ -19,7 +19,7 @@ namespace Tester
         public string Naam { get; private set; }
         public string Type { get; private set; }
         public int Strenght { get; private set; }
-
+        
         public int DodeZombie { get; set; }
         public int LevendeZombie { get; set; }
 
